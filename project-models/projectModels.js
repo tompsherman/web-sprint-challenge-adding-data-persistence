@@ -24,7 +24,7 @@ function findResources(){
 function findTasks(){
     return db('tasks as t')
     .join('projects as p', 'p.id', 't.project_id')
-    .select('t.task_name', 't.task_notes', 'p.proj_name', 'p.proj_description')
+    .select('t.task_name', 't.task_notes', 'p.proj_name', 'p.proj_description', 't.task_complete')
 }
 async function createProject(project){
     const [id] = await
