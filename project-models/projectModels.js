@@ -26,12 +26,24 @@ function findTasks(){
     .join('projects as p', 'p.id', 't.project_id')
     .select('t.task_name', 't.task_notes', 'p.proj_name', 'p.proj_description')
 }
-function createProject(){
-    return db('projects')
+async function createProject(project){
+    const [id] = await
+    db('projects').insert(project)
+        return db('projects')
+        .where({id})
+        .first()
 }
-function createResource(){
-    return db('resources')
+async function createResource(resource){
+    const [id] = await
+    db('resources').insert(resource)
+        return db('resources')
+        .where({id})
+        .first()
 }
-function createTask(){
-    return db('tasks')
+async function createTask(task){
+    const [id] = await
+    db('tasks').insert(task)
+        return db('tasks')
+        .where({id})
+        .first()
 }
